@@ -1,0 +1,22 @@
+만든 테이블로 간단한 예제를 만들었습니다
+  3) Sub Query – 기본 3개
+--홍차보다 비싼 메뉴 이름 구하기
+select mname
+from menu
+where price > (select max(price)
+from menu
+where mname = '홍차');
+ --카푸치노와 수량이 같은 메뉴들 이름과 가격 구하기
+select mname,price
+from menu
+where cno = (select cno
+from menu 
+where mname = '카푸치노') and mname <> '카푸치노';
+ 
+--디저트에서 가장 저렴한 디저트 구하기
+select mname, price
+from menu
+where price <= (select min(price)
+from menu
+where cno = '3');
+ 
