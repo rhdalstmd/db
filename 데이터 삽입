@@ -1,0 +1,36 @@
+-- CCAT 테이블 데이터 삽입
+INSERT INTO CCAT (cno, cname) VALUES (1, '커피');
+INSERT INTO CCAT (cno, cname) VALUES (2, '차');
+INSERT INTO CCAT (cno, cname) VALUES (3, '디저트');
+INSERT INTO CCAT (cno, cname) VALUES (4, '음료');
+
+-- MENU 테이블 데이터 삽입
+INSERT INTO MENU (mno, mname, price, cno) VALUES (101, '아메리카노', 3000, 1);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (102, '카페라떼', 3500, 1);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (103, '카푸치노', 4000, 1);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (104, '녹차', 3000, 2);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (105, '홍차', 3000, 2);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (106, '레몬 에이드', 4500, 4);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (107, '마카롱', 1500, 3);
+INSERT INTO MENU (mno, mname, price, cno) VALUES (108, '티라미수', 2500, 3);
+
+-- ORDERS 테이블 데이터 삽입
+INSERT INTO ORDERS (ono, odate, total) VALUES (1001, TO_DATE('2024-12-01', 'YYYY-MM-DD'), 12000);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1002, TO_DATE('2024-12-02', 'YYYY-MM-DD'), 8500);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1003, TO_DATE('2024-12-03', 'YYYY-MM-DD'), 17000);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1004, TO_DATE('2024-12-04', 'YYYY-MM-DD'), 10500);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1005, TO_DATE('2024-12-05', 'YYYY-MM-DD'), 13500);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1006, TO_DATE('2024-12-06', 'YYYY-MM-DD'), 9500);
+INSERT INTO ORDERS (ono, odate, total) VALUES (1007, TO_DATE('2024-12-07', 'YYYY-MM-DD'), 11000);
+
+-- Mijung 테이블 데이터 삽입
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (1, 2, 6000, 101, 1001);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (2, 1, 3500, 102, 1001);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (3, 1, 3000, 104, 1002);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (4, 3, 10500, 106, 1003);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (5, 2, 5000, 108, 1004);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (6, 1, 3000, 101, 1005);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (7, 2, 6000, 102, 1006);
+INSERT INTO Mijung (jon, quantity, mtotal, mno, ono) VALUES (8, 1, 2500, 107, 1007);
+
+commit;
