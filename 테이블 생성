@@ -1,0 +1,32 @@
+-- 분류 테이블 (CCAT)
+CREATE TABLE CCAT (
+    cno NUMBER(4) CONSTRAINT PK_CCAT PRIMARY KEY,  -- 분류 번호
+    cname VARCHAR2(20)                             -- 분류명
+);
+
+-- 메뉴 테이블 (MENU)
+CREATE TABLE MENU (
+    mno NUMBER(6) CONSTRAINT PK_MENU PRIMARY KEY,          -- 메뉴 번호
+    mname VARCHAR2(50),                                    -- 메뉴명
+    price NUMBER(6),                                       -- 가격
+    cno NUMBER(4),                                         -- 분류 번호
+    CONSTRAINT FK_CNO FOREIGN KEY (cno) REFERENCES CCAT(cno) -- CCAT 테이블의 cno를 참조
+);
+
+-- 주문 테이블 (ORDERS)
+CREATE TABLE ORDERS (
+    ono NUMBER(6) CONSTRAINT PK_ORDERS PRIMARY KEY,         -- 주문번호
+    odate DATE,                                             -- 주문날짜
+    total NUMBER(8)                                         -- 총금액
+);
+
+-- 메뉴 지정 테이블 (Mijung)
+CREATE TABLE Mijung (
+    jon NUMBER(6) CONSTRAINT PK_Mijung PRIMARY KEY,        -- 메뉴 지정 번호
+    quantity NUMBER(10),                                   -- 수량
+    mtotal NUMBER(8),                                      -- 메뉴 총액
+    mno NUMBER(6),                                         -- MENU 테이블 참조
+    ono NUMBER(6),                                         -- ORDERS 테이블 참조
+    CONSTRAINT FK_MNO FOREIGN KEY (mno) REFERENCES MENU(mno), -- MENU 테이블의 mno를 참조
+    CONSTRAINT FK_ONO FOREIGN KEY (ono) REFERENCES ORDERS(ono) -- ORDERS 테이블의 ono를 참조
+);
